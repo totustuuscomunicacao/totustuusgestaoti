@@ -31,7 +31,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <i class="fad fa-database fs-xxl-10"></i>
+                            <i class="fad fa-database fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -54,7 +54,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/vimeo.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-fingerprint fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -75,7 +75,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/kickstarter.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-briefcase fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -96,7 +96,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/beats-electronics.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-sign-in fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -117,7 +117,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/rgb.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-mail-bulk fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -138,7 +138,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/disqus.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-bells fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -159,7 +159,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-code fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -180,7 +180,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-key fs-2x"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
