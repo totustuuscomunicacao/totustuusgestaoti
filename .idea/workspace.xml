@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="628718ba-d59c-4f52-8997-7592de70aefa" name="Changes" comment="Configurando informações Iniciais">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/install/layout/main/root/aside/secundary/_secundary.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/install/layout/main/root/aside/secundary/_secundary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/themes/install/layout/main/root/aside/secundary/wrapper/_tab-pane-1.php" beforeDir="false" afterPath="$PROJECT_DIR$/themes/install/layout/main/root/aside/secundary/wrapper/_tab-pane-1.php" afterDir="false" />
-    </list>
+    <list default="true" id="628718ba-d59c-4f52-8997-7592de70aefa" name="Changes" comment="Editando Informações do Install" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -116,7 +112,7 @@
       <updated>1641300716064</updated>
       <workItem from="1641300718147" duration="1524000" />
       <workItem from="1641302432376" duration="8857000" />
-      <workItem from="1641345975981" duration="19643000" />
+      <workItem from="1641345975981" duration="19946000" />
     </task>
     <task id="LOCAL-00001" summary="Configurando informações Iniciais">
       <created>1641402549459</created>
@@ -188,7 +184,21 @@
       <option name="project" value="LOCAL" />
       <updated>1641410353576</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Configurando informações Fonts Awesome">
+      <created>1641411159297</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1641411159297</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Editando Informações do Install">
+      <created>1641411202768</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1641411202768</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +218,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Configurando informações Iniciais" />
-    <option name="LAST_COMMIT_MESSAGE" value="Configurando informações Iniciais" />
+    <MESSAGE value="Configurando informações Fonts Awesome" />
+    <MESSAGE value="Editando Informações do Install" />
+    <option name="LAST_COMMIT_MESSAGE" value="Editando Informações do Install" />
   </component>
 </project>

@@ -42,6 +42,8 @@ License: For each use you must have a valid license purchased only from above li
     <link id="kt_favicon" rel="shortcut icon" type="image/png" href="<?= url("storage/images/developer/favicon.svg"); ?>"/>
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="<?= url("assets/fonts/fontawesome-v5/css/pro.min.css"); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?= url("assets/fonts/fontawesome-v6/css/all.css.css"); ?>" rel="stylesheet" type="text/css" />
     <!--end::Fonts-->
     <!--begin::Page Vendor Stylesheets(used by this page)-->
     <link href="<?= url("assets/plugins/custom/fullcalendar/fullcalendar.bundle.css"); ?>" rel="stylesheet" type="text/css" />
