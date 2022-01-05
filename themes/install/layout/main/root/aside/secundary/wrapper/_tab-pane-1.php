@@ -31,7 +31,7 @@ $language = new Language();
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
                         <span class="symbol-label">
-                            <img src="assets/media/svg/brand-logos/bebo.svg" class="h-50 align-self-center" alt="" />
+                            <i class="fad fa-database fs-xxl-10"></i>
                         </span>
                     </div>
                     <!--end::Symbol-->
@@ -39,11 +39,11 @@ $language = new Language();
                     <div class="d-flex flex-column flex-grow-1">
                         <!--begin::Title-->
                         <h5 class="custom-list-title fw-bold text-gray-800 mb-1">
-                            Gestão de Chamados
+                            Banco de Dados
                         </h5>
                         <!--end::Title-->
                         <!--begin::Link-->
-                        <span class="text-gray-400 fw-bold">Halp Dask</span>
+                        <span class="text-gray-400 fw-bold">Configuração</span>
                         <!--end::Link-->
                     </div>
                     <!--begin::Description-->
@@ -61,10 +61,10 @@ $language = new Language();
                     <!--begin::Description-->
                     <div class="d-flex flex-column flex-grow-1">
                         <!--begin::Title-->
-                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Gestão de Usuários</h5>
+                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Criptografia</h5>
                         <!--end::Title-->
                         <!--begin::Link-->
-                        <span class="text-gray-400 fw-bold">User Management</span>
+                        <span class="text-gray-400 fw-bold">Configuração</span>
                         <!--end::Link-->
                     </div>
                     <!--begin::Description-->
@@ -82,10 +82,10 @@ $language = new Language();
                     <!--begin::Description-->
                     <div class="d-flex flex-column flex-grow-1">
                         <!--begin::Title-->
-                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Gestão de Hardware</h5>
+                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Entidade</h5>
                         <!--end::Title-->
                         <!--begin::Link-->
-                        <span class="text-gray-400 fw-bold">Hardware Management</span>
+                        <span class="text-gray-400 fw-bold">Configuração</span>
                         <!--end::Link-->
                     </div>
                     <!--begin::Description-->
@@ -103,10 +103,10 @@ $language = new Language();
                     <!--begin::Description-->
                     <div class="d-flex flex-column flex-grow-1">
                         <!--begin::Title-->
-                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Gestão de Software</h5>
+                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Login</h5>
                         <!--end::Title-->
                         <!--begin::Link-->
-                        <span class="text-gray-400 fw-bold">By SIA Team</span>
+                        <span class="text-gray-400 fw-bold">Configuração</span>
                         <!--end::Link-->
                     </div>
                     <!--begin::Description-->
@@ -116,18 +116,18 @@ $language = new Language();
                 <a href="<?= url("/"); ?>" class="custom-list d-flex align-items-center px-5 py-4">
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
-																<span class="symbol-label">
-																	<img src="assets/media/svg/brand-logos/rgb.svg" class="h-50 align-self-center" alt="" />
-																</span>
+                        <span class="symbol-label">
+                            <img src="assets/media/svg/brand-logos/rgb.svg" class="h-50 align-self-center" alt="" />
+                        </span>
                     </div>
                     <!--end::Symbol-->
                     <!--begin::Description-->
                     <div class="d-flex flex-column flex-grow-1">
                         <!--begin::Title-->
-                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">RGB Cloud System</h5>
+                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Servidor de E-mail</h5>
                         <!--end::Title-->
                         <!--begin::Link-->
-                        <span class="text-gray-400 fw-bold">By Andrei</span>
+                        <span class="text-gray-400 fw-bold">Configuração</span>
                         <!--end::Link-->
                     </div>
                     <!--begin::Description-->
@@ -137,18 +137,18 @@ $language = new Language();
                 <a href="<?= url("/"); ?>" class="custom-list d-flex align-items-center px-5 py-4">
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
-																<span class="symbol-label">
-																	<img src="assets/media/svg/brand-logos/disqus.svg" class="h-50 align-self-center" alt="" />
-																</span>
+                        <span class="symbol-label">
+                            <img src="assets/media/svg/brand-logos/disqus.svg" class="h-50 align-self-center" alt="" />
+                        </span>
                     </div>
                     <!--end::Symbol-->
                     <!--begin::Description-->
                     <div class="d-flex flex-column flex-grow-1">
                         <!--begin::Title-->
-                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Disqus Forum</h5>
+                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Notificação</h5>
                         <!--end::Title-->
                         <!--begin::Link-->
-                        <span class="text-gray-400 fw-bold">By Disqus Inc.</span>
+                        <span class="text-gray-400 fw-bold">Configuração</span>
                         <!--end::Link-->
                     </div>
                     <!--begin::Description-->
@@ -158,18 +158,39 @@ $language = new Language();
                 <a href="<?= url("/"); ?>" class="custom-list d-flex align-items-center px-5 py-4">
                     <!--begin::Symbol-->
                     <div class="symbol symbol-40px me-5">
-																<span class="symbol-label">
-																	<img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
-																</span>
+                        <span class="symbol-label">
+                            <img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
+                        </span>
                     </div>
                     <!--end::Symbol-->
                     <!--begin::Description-->
                     <div class="d-flex flex-column flex-grow-1">
                         <!--begin::Title-->
-                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Proove Quick CRM</h5>
+                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Modulos</h5>
                         <!--end::Title-->
                         <!--begin::Link-->
-                        <span class="text-gray-400 fw-bold">By Proove Limited</span>
+                        <span class="text-gray-400 fw-bold">Configuração</span>
+                        <!--end::Link-->
+                    </div>
+                    <!--begin::Description-->
+                </a>
+                <!--end::Item-->
+                <!--begin::Item-->
+                <a href="<?= url("/"); ?>" class="custom-list d-flex align-items-center px-5 py-4">
+                    <!--begin::Symbol-->
+                    <div class="symbol symbol-40px me-5">
+                        <span class="symbol-label">
+                            <img src="assets/media/svg/brand-logos/plurk.svg" class="h-50 align-self-center" alt="" />
+                        </span>
+                    </div>
+                    <!--end::Symbol-->
+                    <!--begin::Description-->
+                    <div class="d-flex flex-column flex-grow-1">
+                        <!--begin::Title-->
+                        <h5 class="custom-list-title fw-bold text-gray-800 mb-1">Token</h5>
+                        <!--end::Title-->
+                        <!--begin::Link-->
+                        <span class="text-gray-400 fw-bold">Configuração</span>
                         <!--end::Link-->
                     </div>
                     <!--begin::Description-->
