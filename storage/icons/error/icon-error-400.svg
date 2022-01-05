@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 339.9">
+    <defs>
+        <style>
+            .a,.g,.j{fill:#25d6f2;}.b,.f,.i{fill:#ff4363;}.c{opacity:0.2;}.d,.h{fill:#313131;}.e{fill:#ffffff;}.f,.g,.h,.i,.j{isolation:isolate;}.f,.g,.h{font-size:130.61px;font-family:Montserrat-ExtraBold,
+            Montserrat;font-weight:800;}.i,.j{opacity:0.4;}
+        </style>
+    </defs>
+    <polygon class="a" points="267.3 14 267.4 14 180.1 14 180.1 150.3 293.3 150.3 293.3 40.1 267.3 14"/>
+    <polygon class="b" points="288.8 22.5 288.8 22.5 201.6 22.5 201.6 158.7 314.8 158.7 314.8 48.6 288.8 22.5"/>
+    <g class="c">
+        <polygon class="b" points="297.7 15.3 297.8 15.3 210.6 15.3 210.6 151.4 323.7 151.4 323.7 41.3 297.7 15.3"/>
+    </g>
+    <g class="c">
+        <polygon class="a" points="254.9 22.5 254.9 22.5 167.7 22.5 167.7 158.7 280.8 158.7 280.8 48.6 254.9 22.5"/>
+    </g>
+    <polygon class="d" points="277.5 17.8 277.5 17.8 190.3 17.8 190.3 154.1 303.4 154.1 303.4 43.8 277.5 17.8"/>
+    <path class="e"
+          d="M268.3,211.5a2.4,2.4,0,0,1-2.5-2.2h0a18.4,18.4,0,1,0-36.8,0,2.4,2.4,0,0,1-4.8,0,23.2,23.2,0,0,1,46.4,0A2.3,2.3,0,0,1,268.3,211.5Z"
+          transform="translate(0 -85.9)"/>
+    <polygon class="e"
+             points="236.7 78.3 227 68.5 236.7 58.9 231.6 53.8 221.9 63.5 212.2 53.8 207.1 58.9 216.9 68.5 207.1 78.3 212.2 83.4 221.9 73.7 231.6 83.4 236.7 78.3"/>
+    <polygon class="e"
+             points="287.8 78.3 278 68.5 287.8 58.9 282.7 53.8 273 63.5 263.3 53.8 258.2 58.9 267.9 68.5 258.2 78.3 263.3 83.4 273 73.7 282.7 83.4 287.8 78.3"/>
+    <rect class="d" x="154.5" y="29.4" width="78.6" height="7.58"/>
+    <rect class="d" x="142.9" y="51.4" width="60.3" height="7.58"/>
+    <rect class="d" x="295.2" y="92.4" width="45.5" height="7.58"/>
+    <rect class="d" x="161.7" y="132.8" width="45.5" height="7.58"/>
+    <rect class="b" x="295.2" y="68.5" width="31.8" height="7.58"/>
+    <rect class="b" x="286.2" y="121.8" width="44.5" height="7.58"/>
+    <rect class="a" x="164.4" y="96.2" width="44.5" height="7.58"/>
+    <rect class="a" x="172.5" y="16.2" width="55.1" height="7.58"/>
+    <rect class="a" x="262.9" y="140.3" width="55.1" height="7.58"/>
+    <rect class="a" x="180.3" y="163.9" width="33.7" height="7.58"/>
+    <rect class="d" x="259.6" width="33.7" height="7.58"/>
+    <rect class="d" x="152.7" y="75.8" width="19.7" height="7.58"/>
+    <rect class="d" x="311" y="27.9" width="19.7" height="7.58"/>
+    <rect class="b" x="330.9" y="50" width="19.7" height="7.58"/>
+    <rect class="b" x="142.9" y="112.8" width="19.7" height="7.58"/>
+    <rect class="a" x="333" y="109" width="19.7" height="7.58"/>
+    <text class="f" transform="translate(127.1 301.8)">400</text>
+    <text class="g" transform="translate(102 301.8)">400</text>
+    <g class="c">
+        <text class="g" transform="translate(81.4 304.9)">404</text>
+    </g>
+    <g class="c">
+        <text class="f" transform="translate(136.1 291.8)">400</text>
+    </g>
+    <text class="h" transform="translate(113.1 301.8)">400</text>
+    <rect class="d" x="101.5" y="216.3" width="51.2" height="7.93"/>
+    <rect class="d" x="101.5" y="244.5" width="33.6" height="7.93"/>
+    <rect class="d" x="89.7" y="268.7" width="33.6" height="7.93"/>
+    <rect class="d" x="336.9" y="212.4" width="33.6" height="7.93"/>
+    <rect class="d" x="360.7" y="252.5" width="33.6" height="7.93"/>
+    <rect class="d" x="355.5" y="290.7" width="33.6" height="7.93"/>
+    <rect class="b" x="328.6" y="230.1" width="33.6" height="7.93"/>
+    <rect class="b" x="264.9" y="217.7" width="33.6" height="7.93"/>
+    <rect class="a" x="108.8" y="230.1" width="33.6" height="7.93"/>
+    <rect class="a" x="137" y="293.8" width="33.6" height="7.93"/>
+    <rect class="a" x="191.3" y="230.1" width="33.6" height="7.93"/>
+    <rect class="d" y="26.1" width="43.1" height="14.49"/>
+    <rect class="d" x="428.4" y="136.3" width="64.4" height="14.49"/>
+    <rect class="d" x="12" y="297.5" width="52.8" height="14.49"/>
+    <rect class="b" x="440.2" y="81.6" width="36.8" height="8.27"/>
+    <rect class="i" x="24.8" y="104.3" width="36.8" height="8.27"/>
+    <rect class="i" x="455.1" y="305.3" width="36.8" height="8.27"/>
+    <rect class="a" x="473.5" y="219.7" width="38.5" height="8.67"/>
+    <rect class="a" x="395.9" y="21.8" width="38.5" height="8.67"/>
+    <rect class="a" x="15.4" y="199.4" width="38.5" height="8.67"/>
+    <rect class="j" x="88.8" y="57.6" width="38.5" height="8.67"/>
+</svg>

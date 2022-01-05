@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<entity>
+    <entity id="1">
+        <pic>storage/images/entity/brasao.bmp</pic>
+        <name>Prefeitura Municipal de Itaúna</name>
+        <nickname>PMI</nickname>
+        <email>j.blogs@me.com</email>
+        <contact>+553732499500</contact>
+        <website>http://www.itauna.mg.gov.br</website>
+        <headquarters>1</headquarters>
+        <situation>3</situation>
+    </entity>
+    <entity id="2">
+        <pic>storage/images/entity/brasao.bmp</pic>
+        <name>Fundo Municipal de Saúde de Itaúna</name>
+        <nickname>FMSI</nickname>
+        <email>j.blogs@me.com</email>
+        <contact>+553732414949</contact>
+        <website>http://www.itauna.mg.gov.br</website>
+        <headquarters>0</headquarters>
+        <situation>3</situation>
+    </entity>
+</entity>

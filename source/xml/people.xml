@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<people>
+    <people id="1">
+        <pic>storage/images/people/brasao.bmp</pic>
+        <name>Jefferson Augusto Gontijo Silva</name>
+        <nickname>jefferson.augusto</nickname>
+        <email>software@itauna.mg.gov.br</email>
+        <contact>+5533988427742</contact>
+        <situation>3</situation>
+    </people>
+</people>

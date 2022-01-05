@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<address>
+    <address id="1">
+        <identity>1</identity>
+        <zipcode>35680-760</zipcode>
+        <street>Avenida Boulevard</street>
+        <number>153</number>
+        <district>Boulevard Lago Sul</district>
+        <city>Itaúna</city>
+        <state>Minas Gerais</state>
+        <country>Brasil</country>
+        <complement>Sede Administrativa</complement>
+        <reference>Perto do Supermercado EPA</reference>
+    </address>
+    <address id="2">
+        <identity>1</identity>
+        <zipcode>35680-403</zipcode>
+        <street>Avenida Manoel da Custodia</street>
+        <number>1111</number>
+        <district>Vila Nazare</district>
+        <city>Itaúna</city>
+        <state>Minas Gerais</state>
+        <country>Brasil</country>
+        <complement>Secretaria Municipal de Saúde</complement>
+        <reference>AVACCI</reference>
+    </address>
+</address>

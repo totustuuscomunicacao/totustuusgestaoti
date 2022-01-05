@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="512px"
+     height="512px"
+     enable-background="new 0 0 499.8 332"
+     viewBox="0 0 499.8 332"
+     version="1.1">
+
+    <defs>
+        <style>
+            .a,.g,.j{fill:#25d6f2;}.b,.f,.i{fill:#ff4363;}.c{opacity:0.2;}.d,.h{fill:#313131;}.e{fill:#fff;}.f,.g,.h{font-size:127.5px;font-family:Montserrat-Black,
+            Montserrat;font-weight:800;}.i,.j{opacity:0.4;}
+        </style>
+    </defs>
+    <polygon class="a" points="260.9 13.7 261 13.7 175.8 13.7 175.8 146.7 286.3 146.7 286.3 39.1 260.9 13.7"/>
+    <polygon class="b" points="281.9 22 281.9 22 196.8 22 196.8 154.9 307.3 154.9 307.3 47.4 281.9 22"/>
+    <g class="c">
+        <polygon class="b" points="290.6 14.9 290.7 14.9 205.6 14.9 205.6 147.8 316 147.8 316 40.3 290.6 14.9"/>
+    </g>
+    <g class="c">
+        <polygon class="a" points="248.8 22 248.8 22 163.7 22 163.7 154.9 274.1 154.9 274.1 47.4 248.8 22"/>
+    </g>
+    <polygon class="d" points="270.9 17.4 270.9 17.4 185.8 17.4 185.8 150.4 296.2 150.4 296.2 42.8 270.9 17.4"/>
+    <path class="e"
+          d="M262.1,123.1a2.3,2.3,0,0,1-2.4-2.3,18,18,0,0,0-36,0,2.3,2.3,0,1,1-4.6,0,22.7,22.7,0,0,1,45.3,0A2.3,2.3,0,0,1,262.1,123.1Z"
+          transform="translate(-0.2 -0.5)"/>
+    <polygon class="e"
+             points="231.1 76.4 221.6 66.9 231.1 57.5 226.1 52.5 216.6 62 207.1 52.5 202.2 57.5 211.7 66.9 202.2 76.4 207.1 81.4 216.6 71.9 226.1 81.4 231.1 76.4"/>
+    <polygon class="e"
+             points="280.9 76.4 271.4 66.9 280.9 57.5 276 52.5 266.5 62 257 52.5 252 57.5 261.5 66.9 252 76.4 257 81.4 266.5 71.9 276 81.4 280.9 76.4"/>
+    <rect class="d" x="150.8" y="28.7" width="76.7" height="7.4"/>
+    <rect class="d" x="139.5" y="50.2" width="58.9" height="7.4"/>
+    <rect class="d" x="288.2" y="90.2" width="44.4" height="7.4"/>
+    <rect class="d" x="157.8" y="129.6" width="44.4" height="7.4"/>
+    <rect class="b" x="288.2" y="66.9" width="31" height="7.4"/>
+    <rect class="b" x="279.4" y="118.9" width="43.4" height="7.4"/>
+    <rect class="a" x="160.5" y="93.9" width="43.4" height="7.4"/>
+    <rect class="a" x="168.4" y="15.8" width="53.8" height="7.4"/>
+    <rect class="a" x="256.6" y="137" width="53.8" height="7.4"/>
+    <rect class="a" x="176" y="160" width="32.9" height="7.4"/>
+    <rect class="d" x="253.4" width="32.9" height="7.4"/>
+    <rect class="d" x="149.1" y="74" width="19.2" height="7.4"/>
+    <rect class="d" x="303.6" y="27.2" width="19.2" height="7.4"/>
+    <rect class="b" x="323" y="48.8" width="19.2" height="7.4"/>
+    <rect class="b" x="139.5" y="110.1" width="19.2" height="7.4"/>
+    <rect class="a" x="325.1" y="106.4" width="19.2" height="7.4"/>
+    <text class="f" transform="translate(124.1 294.6)">404</text>
+    <text class="g" transform="translate(99.6 294.6)">404</text>
+    <g class="c">
+        <text class="g" transform="translate(79.5 297.6)">404</text>
+    </g>
+    <g class="c">
+        <text class="f" transform="translate(132.9 284.8)">404</text>
+    </g>
+    <text class="h" transform="translate(110.4 294.6)">404</text>
+    <rect class="d" x="99.1" y="211.1" width="50" height="7.74"/>
+    <rect class="d" x="99.1" y="238.7" width="32.8" height="7.74"/>
+    <rect class="d" x="87.6" y="262.3" width="32.8" height="7.74"/>
+    <rect class="d" x="328.9" y="207.3" width="32.8" height="7.74"/>
+    <rect class="d" x="352.1" y="246.5" width="32.8" height="7.74"/>
+    <rect class="d" x="347" y="283.8" width="32.8" height="7.74"/>
+    <rect class="b" x="320.8" y="224.6" width="32.8" height="7.74"/>
+    <rect class="b" x="258.6" y="212.5" width="32.8" height="7.74"/>
+    <rect class="a" x="106.2" y="224.6" width="32.8" height="7.74"/>
+    <rect class="a" x="133.7" y="286.8" width="32.8" height="7.74"/>
+    <rect class="a" x="186.7" y="224.6" width="32.8" height="7.74"/>
+    <rect class="d" y="25.5" width="42.1" height="14.14"/>
+    <rect class="d" x="418.2" y="133.1" width="62.9" height="14.14"/>
+    <rect class="d" x="11.7" y="290.4" width="51.5" height="14.14"/>
+    <rect class="b" x="429.7" y="79.7" width="35.9" height="8.07"/>
+    <rect class="i" x="24.2" y="101.8" width="35.9" height="8.07"/>
+    <rect class="i" x="444.3" y="298" width="35.9" height="8.07"/>
+    <rect class="a" x="462.2" y="214.5" width="37.6" height="8.46"/>
+    <rect class="a" x="386.5" y="21.3" width="37.6" height="8.46"/>
+    <rect class="a" x="15" y="194.6" width="37.6" height="8.46"/>
+    <rect class="j" x="86.7" y="56.2" width="37.6" height="8.46"/>
+</svg>
