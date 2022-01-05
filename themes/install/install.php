@@ -1,8 +1,11 @@
 <?php
+
 use Source\Support\Language;
+
 $language = new Language();
 
-function login_ldap(){
+function login_ldap()
+{
 
     $domain = 'pmi.dns.com';
     $username = 'administrador';
@@ -11,16 +14,16 @@ function login_ldap(){
     $ldapconfig['port'] = 389;//389;
     $ldapconfig['basedn'] = 'dc=pmi,dc=dns,dc=com';
 
-    $ds=ldap_connect($ldapconfig['host'], $ldapconfig['port']);
+    $ds = ldap_connect($ldapconfig['host'], $ldapconfig['port']);
     ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
     ldap_set_option($ds, LDAP_OPT_REFERRALS, 0);
 
-    $dn="ou=PMI,".$ldapconfig['basedn'];
-    $bind=ldap_bind($ds, $username .'@' .$domain, $password);
+    $dn = "ou=PMI," . $ldapconfig['basedn'];
+    $bind = ldap_bind($ds, $username . '@' . $domain, $password);
     $user_active = getenv("USERNAME");
-    if(true === $bind):
+    if (true === $bind):
         $ldap_base_dn = 'DC=XXXX,DC=XXXX';
-        $search_filter = '(&(objectCategory=person)(samaccountname='.$user_active.'))';
+        $search_filter = '(&(objectCategory=person)(samaccountname=' . $user_active . '))';
         $attributes = array();
         $attributes[] = 'givenname';
         $attributes[] = 'mail';
@@ -29,29 +32,30 @@ function login_ldap(){
         $result = ldap_search($ds, $ldapconfig['basedn'], $search_filter, $attributes);
         if (false !== $result):
             $entries = ldap_get_entries($ds, $result);
-            for ($x=0; $x<$entries['count']; $x++):
+            for ($x = 0; $x < $entries['count']; $x++):
                 if (!empty($entries[$x]['givenname'][0]) &&
                     !empty($entries[$x]['mail'][0]) &&
                     !empty($entries[$x]['samaccountname'][0]) &&
                     !empty($entries[$x]['sn'][0]) &&
                     'Shop' !== $entries[$x]['sn'][0] &&
                     'Account' !== $entries[$x]['sn'][0]):
-                    $ad_users[strtoupper(trim($entries[$x]['samaccountname'][0]))] = array('email' => strtolower(trim($entries[$x]['mail'][0])),'first_name' => trim($entries[$x]['givenname'][0]),'last_name' => trim($entries[$x]['sn'][0]));
+                    $ad_users[strtoupper(trim($entries[$x]['samaccountname'][0]))] = array('email' => strtolower(trim($entries[$x]['mail'][0])), 'first_name' => trim($entries[$x]['givenname'][0]), 'last_name' => trim($entries[$x]['sn'][0]));
                 endif;
             endfor;
         endif;
         ldap_unbind($ds); // Clean up after ourselves.
-        echo "Recuperado ". count($ad_users) ." Usuários do Active Directory\n";
-        foreach($ad_users as $ad_users_item):
+        echo "Recuperado " . count($ad_users) . " Usuários do Active Directory\n";
+        foreach ($ad_users as $ad_users_item):
         endforeach;
         var_dump($ad_users_item);
 
     endif;
 
 }
+
 ?>
 
-<?php if(isset($v)):endif; ?>
+<?php if (isset($v)):endif; ?>
 <?php $v->layout("_theme"); ?>
 
 <div class="card">
@@ -89,7 +93,8 @@ function login_ldap(){
             </div>
             <!--end::Nav-->
             <!--begin::Form-->
-            <form class="mx-auto mw-600px w-100 pt-15 pb-10 fv-plugins-bootstrap5 fv-plugins-framework" novalidate="novalidate" id="kt_create_account_form">
+            <form class="mx-auto mw-600px w-100 pt-15 pb-10 fv-plugins-bootstrap5 fv-plugins-framework"
+                  novalidate="novalidate" id="kt_create_account_form">
                 <!--begin::Step 1-->
                 <div class="current" data-kt-stepper-element="content">
                     <!--begin::Wrapper-->
@@ -98,11 +103,14 @@ function login_ldap(){
                         <div class="pb-10 pb-lg-15">
                             <!--begin::Title-->
                             <h2 class="fw-bolder d-flex align-items-center text-dark">Choose Account Type
-                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Billing is issued based on your selected account type" aria-label="Billing is issued based on your selected account type"></i></h2>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title=""
+                                   data-bs-original-title="Billing is issued based on your selected account type"
+                                   aria-label="Billing is issued based on your selected account type"></i></h2>
                             <!--end::Title-->
                             <!--begin::Notice-->
                             <div class="text-muted fw-bold fs-6">If you need more info, please check out
-                                <a href="#" class="link-primary fw-bolder">Help Page</a>.</div>
+                                <a href="#" class="link-primary fw-bolder">Help Page</a>.
+                            </div>
                             <!--end::Notice-->
                         </div>
                         <!--end::Heading-->
@@ -113,13 +121,20 @@ function login_ldap(){
                                 <!--begin::Col-->
                                 <div class="col-lg-6">
                                     <!--begin::Option-->
-                                    <input type="radio" class="btn-check" name="account_type" value="personal" checked="checked" id="kt_create_account_form_account_type_personal">
-                                    <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
+                                    <input type="radio" class="btn-check" name="account_type" value="personal"
+                                           checked="checked" id="kt_create_account_form_account_type_personal">
+                                    <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10"
+                                           for="kt_create_account_form_account_type_personal">
                                         <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
                                         <span class="svg-icon svg-icon-3x me-5">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z" fill="black"></path>
-																			<path opacity="0.3" d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z" fill="black"></path>
+																		<svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="24" height="24" viewBox="0 0 24 24"
+                                                                             fill="none">
+																			<path d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z"
+                                                                                  fill="black"></path>
+																			<path opacity="0.3"
+                                                                                  d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z"
+                                                                                  fill="black"></path>
 																		</svg>
 																	</span>
                                         <!--end::Svg Icon-->
@@ -131,18 +146,26 @@ function login_ldap(){
                                         <!--end::Info-->
                                     </label>
                                     <!--end::Option-->
-                                    <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                                    <div class="fv-plugins-message-container invalid-feedback"></div>
+                                </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-lg-6">
                                     <!--begin::Option-->
-                                    <input type="radio" class="btn-check" name="account_type" value="corporate" id="kt_create_account_form_account_type_corporate">
-                                    <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
+                                    <input type="radio" class="btn-check" name="account_type" value="corporate"
+                                           id="kt_create_account_form_account_type_corporate">
+                                    <label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
+                                           for="kt_create_account_form_account_type_corporate">
                                         <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
                                         <span class="svg-icon svg-icon-3x me-5">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path opacity="0.3" d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z" fill="black"></path>
-																			<path d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z" fill="black"></path>
+																		<svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="24" height="24" viewBox="0 0 24 24"
+                                                                             fill="none">
+																			<path opacity="0.3"
+                                                                                  d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z"
+                                                                                  fill="black"></path>
+																			<path d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z"
+                                                                                  fill="black"></path>
 																		</svg>
 																	</span>
                                         <!--end::Svg Icon-->
@@ -175,7 +198,8 @@ function login_ldap(){
                             <!--end::Title-->
                             <!--begin::Notice-->
                             <div class="text-muted fw-bold fs-6">If you need more info, please check out
-                                <a href="#" class="link-primary fw-bolder">Help Page</a>.</div>
+                                <a href="#" class="link-primary fw-bolder">Help Page</a>.
+                            </div>
                             <!--end::Notice-->
                         </div>
                         <!--end::Heading-->
@@ -183,7 +207,9 @@ function login_ldap(){
                         <div class="mb-10 fv-row fv-plugins-icon-container">
                             <!--begin::Label-->
                             <label class="d-flex align-items-center form-label mb-3">Specify Team Size
-                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Provide your team size to help us setup your billing" aria-label="Provide your team size to help us setup your billing"></i></label>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title=""
+                                   data-bs-original-title="Provide your team size to help us setup your billing"
+                                   aria-label="Provide your team size to help us setup your billing"></i></label>
                             <!--end::Label-->
                             <!--begin::Row-->
                             <div class="row mb-2" data-kt-buttons="true">
@@ -201,7 +227,8 @@ function login_ldap(){
                                 <div class="col">
                                     <!--begin::Option-->
                                     <label class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4 active">
-                                        <input type="radio" class="btn-check" name="account_team_size" checked="checked" value="2-10">
+                                        <input type="radio" class="btn-check" name="account_team_size" checked="checked"
+                                               value="2-10">
                                         <span class="fw-bolder fs-3">2-10</span>
                                     </label>
                                     <!--end::Option-->
@@ -230,9 +257,12 @@ function login_ldap(){
                             </div>
                             <!--end::Row-->
                             <!--begin::Hint-->
-                            <div class="form-text">Customers will see this shortened version of your statement descriptor</div>
+                            <div class="form-text">Customers will see this shortened version of your statement
+                                descriptor
+                            </div>
                             <!--end::Hint-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="mb-10 fv-row fv-plugins-icon-container">
@@ -240,15 +270,19 @@ function login_ldap(){
                             <label class="form-label mb-3">Team Account Name</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" class="form-control form-control-lg form-control-solid" name="account_name" placeholder="" value="">
+                            <input type="text" class="form-control form-control-lg form-control-solid"
+                                   name="account_name" placeholder="" value="">
                             <!--end::Input-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="mb-0 fv-row fv-plugins-icon-container">
                             <!--begin::Label-->
                             <label class="d-flex align-items-center form-label mb-5">Select Account Plan
-                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Monthly billing will be based on your account plan" aria-label="Monthly billing will be based on your account plan"></i></label>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title=""
+                                   data-bs-original-title="Monthly billing will be based on your account plan"
+                                   aria-label="Monthly billing will be based on your account plan"></i></label>
                             <!--end::Label-->
                             <!--begin::Options-->
                             <div class="mb-0">
@@ -261,9 +295,14 @@ function login_ldap(){
 																		<span class="symbol-label">
 																			<!--begin::Svg Icon | path: icons/duotune/finance/fin001.svg-->
 																			<span class="svg-icon svg-icon-1 svg-icon-gray-600">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path d="M20 19.725V18.725C20 18.125 19.6 17.725 19 17.725H5C4.4 17.725 4 18.125 4 18.725V19.725H3C2.4 19.725 2 20.125 2 20.725V21.725H22V20.725C22 20.125 21.6 19.725 21 19.725H20Z" fill="black"></path>
-																					<path opacity="0.3" d="M22 6.725V7.725C22 8.325 21.6 8.725 21 8.725H18C18.6 8.725 19 9.125 19 9.725C19 10.325 18.6 10.725 18 10.725V15.725C18.6 15.725 19 16.125 19 16.725V17.725H15V16.725C15 16.125 15.4 15.725 16 15.725V10.725C15.4 10.725 15 10.325 15 9.725C15 9.125 15.4 8.725 16 8.725H13C13.6 8.725 14 9.125 14 9.725C14 10.325 13.6 10.725 13 10.725V15.725C13.6 15.725 14 16.125 14 16.725V17.725H10V16.725C10 16.125 10.4 15.725 11 15.725V10.725C10.4 10.725 10 10.325 10 9.725C10 9.125 10.4 8.725 11 8.725H8C8.6 8.725 9 9.125 9 9.725C9 10.325 8.6 10.725 8 10.725V15.725C8.6 15.725 9 16.125 9 16.725V17.725H5V16.725C5 16.125 5.4 15.725 6 15.725V10.725C5.4 10.725 5 10.325 5 9.725C5 9.125 5.4 8.725 6 8.725H3C2.4 8.725 2 8.325 2 7.725V6.725L11 2.225C11.6 1.925 12.4 1.925 13.1 2.225L22 6.725ZM12 3.725C11.2 3.725 10.5 4.425 10.5 5.225C10.5 6.025 11.2 6.725 12 6.725C12.8 6.725 13.5 6.025 13.5 5.225C13.5 4.425 12.8 3.725 12 3.725Z" fill="black"></path>
+																				<svg xmlns="http://www.w3.org/2000/svg"
+                                                                                     width="24" height="24"
+                                                                                     viewBox="0 0 24 24" fill="none">
+																					<path d="M20 19.725V18.725C20 18.125 19.6 17.725 19 17.725H5C4.4 17.725 4 18.125 4 18.725V19.725H3C2.4 19.725 2 20.125 2 20.725V21.725H22V20.725C22 20.125 21.6 19.725 21 19.725H20Z"
+                                                                                          fill="black"></path>
+																					<path opacity="0.3"
+                                                                                          d="M22 6.725V7.725C22 8.325 21.6 8.725 21 8.725H18C18.6 8.725 19 9.125 19 9.725C19 10.325 18.6 10.725 18 10.725V15.725C18.6 15.725 19 16.125 19 16.725V17.725H15V16.725C15 16.125 15.4 15.725 16 15.725V10.725C15.4 10.725 15 10.325 15 9.725C15 9.125 15.4 8.725 16 8.725H13C13.6 8.725 14 9.125 14 9.725C14 10.325 13.6 10.725 13 10.725V15.725C13.6 15.725 14 16.125 14 16.725V17.725H10V16.725C10 16.125 10.4 15.725 11 15.725V10.725C10.4 10.725 10 10.325 10 9.725C10 9.125 10.4 8.725 11 8.725H8C8.6 8.725 9 9.125 9 9.725C9 10.325 8.6 10.725 8 10.725V15.725C8.6 15.725 9 16.125 9 16.725V17.725H5V16.725C5 16.125 5.4 15.725 6 15.725V10.725C5.4 10.725 5 10.325 5 9.725C5 9.125 5.4 8.725 6 8.725H3C2.4 8.725 2 8.325 2 7.725V6.725L11 2.225C11.6 1.925 12.4 1.925 13.1 2.225L22 6.725ZM12 3.725C11.2 3.725 10.5 4.425 10.5 5.225C10.5 6.025 11.2 6.725 12 6.725C12.8 6.725 13.5 6.025 13.5 5.225C13.5 4.425 12.8 3.725 12 3.725Z"
+                                                                                          fill="black"></path>
 																				</svg>
 																			</span>
                                                                             <!--end::Svg Icon-->
@@ -280,7 +319,8 @@ function login_ldap(){
                                     <!--end:Label-->
                                     <!--begin:Input-->
                                     <span class="form-check form-check-custom form-check-solid">
-																	<input class="form-check-input" type="radio" name="account_plan" value="1">
+																	<input class="form-check-input" type="radio"
+                                                                           name="account_plan" value="1">
 																</span>
                                     <!--end:Input-->
                                 </label>
@@ -294,9 +334,14 @@ function login_ldap(){
 																		<span class="symbol-label">
 																			<!--begin::Svg Icon | path: icons/duotune/graphs/gra006.svg-->
 																			<span class="svg-icon svg-icon-1 svg-icon-gray-600">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path d="M13 5.91517C15.8 6.41517 18 8.81519 18 11.8152C18 12.5152 17.9 13.2152 17.6 13.9152L20.1 15.3152C20.6 15.6152 21.4 15.4152 21.6 14.8152C21.9 13.9152 22.1 12.9152 22.1 11.8152C22.1 7.01519 18.8 3.11521 14.3 2.01521C13.7 1.91521 13.1 2.31521 13.1 3.01521V5.91517H13Z" fill="black"></path>
-																					<path opacity="0.3" d="M19.1 17.0152C19.7 17.3152 19.8 18.1152 19.3 18.5152C17.5 20.5152 14.9 21.7152 12 21.7152C9.1 21.7152 6.50001 20.5152 4.70001 18.5152C4.30001 18.0152 4.39999 17.3152 4.89999 17.0152L7.39999 15.6152C8.49999 16.9152 10.2 17.8152 12 17.8152C13.8 17.8152 15.5 17.0152 16.6 15.6152L19.1 17.0152ZM6.39999 13.9151C6.19999 13.2151 6 12.5152 6 11.8152C6 8.81517 8.2 6.41515 11 5.91515V3.01519C11 2.41519 10.4 1.91519 9.79999 2.01519C5.29999 3.01519 2 7.01517 2 11.8152C2 12.8152 2.2 13.8152 2.5 14.8152C2.7 15.4152 3.4 15.7152 4 15.3152L6.39999 13.9151Z" fill="black"></path>
+																				<svg xmlns="http://www.w3.org/2000/svg"
+                                                                                     width="24" height="24"
+                                                                                     viewBox="0 0 24 24" fill="none">
+																					<path d="M13 5.91517C15.8 6.41517 18 8.81519 18 11.8152C18 12.5152 17.9 13.2152 17.6 13.9152L20.1 15.3152C20.6 15.6152 21.4 15.4152 21.6 14.8152C21.9 13.9152 22.1 12.9152 22.1 11.8152C22.1 7.01519 18.8 3.11521 14.3 2.01521C13.7 1.91521 13.1 2.31521 13.1 3.01521V5.91517H13Z"
+                                                                                          fill="black"></path>
+																					<path opacity="0.3"
+                                                                                          d="M19.1 17.0152C19.7 17.3152 19.8 18.1152 19.3 18.5152C17.5 20.5152 14.9 21.7152 12 21.7152C9.1 21.7152 6.50001 20.5152 4.70001 18.5152C4.30001 18.0152 4.39999 17.3152 4.89999 17.0152L7.39999 15.6152C8.49999 16.9152 10.2 17.8152 12 17.8152C13.8 17.8152 15.5 17.0152 16.6 15.6152L19.1 17.0152ZM6.39999 13.9151C6.19999 13.2151 6 12.5152 6 11.8152C6 8.81517 8.2 6.41515 11 5.91515V3.01519C11 2.41519 10.4 1.91519 9.79999 2.01519C5.29999 3.01519 2 7.01517 2 11.8152C2 12.8152 2.2 13.8152 2.5 14.8152C2.7 15.4152 3.4 15.7152 4 15.3152L6.39999 13.9151Z"
+                                                                                          fill="black"></path>
 																				</svg>
 																			</span>
                                                                             <!--end::Svg Icon-->
@@ -313,7 +358,9 @@ function login_ldap(){
                                     <!--end:Label-->
                                     <!--begin:Input-->
                                     <span class="form-check form-check-custom form-check-solid">
-																	<input class="form-check-input" type="radio" checked="checked" name="account_plan" value="2">
+																	<input class="form-check-input" type="radio"
+                                                                           checked="checked" name="account_plan"
+                                                                           value="2">
 																</span>
                                     <!--end:Input-->
                                 </label>
@@ -327,10 +374,17 @@ function login_ldap(){
 																		<span class="symbol-label">
 																			<!--begin::Svg Icon | path: icons/duotune/graphs/gra008.svg-->
 																			<span class="svg-icon svg-icon-1 svg-icon-gray-600">
-																				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																					<path d="M13 10.9128V3.01281C13 2.41281 13.5 1.91281 14.1 2.01281C16.1 2.21281 17.9 3.11284 19.3 4.61284C20.7 6.01284 21.6 7.91285 21.9 9.81285C22 10.4129 21.5 10.9128 20.9 10.9128H13Z" fill="black"></path>
-																					<path opacity="0.3" d="M13 12.9128V20.8129C13 21.4129 13.5 21.9129 14.1 21.8129C16.1 21.6129 17.9 20.7128 19.3 19.2128C20.7 17.8128 21.6 15.9128 21.9 14.0128C22 13.4128 21.5 12.9128 20.9 12.9128H13Z" fill="black"></path>
-																					<path opacity="0.3" d="M11 19.8129C11 20.4129 10.5 20.9129 9.89999 20.8129C5.49999 20.2129 2 16.5128 2 11.9128C2 7.31283 5.39999 3.51281 9.89999 3.01281C10.5 2.91281 11 3.41281 11 4.01281V19.8129Z" fill="black"></path>
+																				<svg xmlns="http://www.w3.org/2000/svg"
+                                                                                     width="24" height="24"
+                                                                                     viewBox="0 0 24 24" fill="none">
+																					<path d="M13 10.9128V3.01281C13 2.41281 13.5 1.91281 14.1 2.01281C16.1 2.21281 17.9 3.11284 19.3 4.61284C20.7 6.01284 21.6 7.91285 21.9 9.81285C22 10.4129 21.5 10.9128 20.9 10.9128H13Z"
+                                                                                          fill="black"></path>
+																					<path opacity="0.3"
+                                                                                          d="M13 12.9128V20.8129C13 21.4129 13.5 21.9129 14.1 21.8129C16.1 21.6129 17.9 20.7128 19.3 19.2128C20.7 17.8128 21.6 15.9128 21.9 14.0128C22 13.4128 21.5 12.9128 20.9 12.9128H13Z"
+                                                                                          fill="black"></path>
+																					<path opacity="0.3"
+                                                                                          d="M11 19.8129C11 20.4129 10.5 20.9129 9.89999 20.8129C5.49999 20.2129 2 16.5128 2 11.9128C2 7.31283 5.39999 3.51281 9.89999 3.01281C10.5 2.91281 11 3.41281 11 4.01281V19.8129Z"
+                                                                                          fill="black"></path>
 																				</svg>
 																			</span>
                                                                             <!--end::Svg Icon-->
@@ -347,14 +401,16 @@ function login_ldap(){
                                     <!--end:Label-->
                                     <!--begin:Input-->
                                     <span class="form-check form-check-custom form-check-solid">
-																	<input class="form-check-input" type="radio" name="account_plan" value="3">
+																	<input class="form-check-input" type="radio"
+                                                                           name="account_plan" value="3">
 																</span>
                                     <!--end:Input-->
                                 </label>
                                 <!--end::Option-->
                             </div>
                             <!--end::Options-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                     </div>
                     <!--end::Wrapper-->
@@ -371,7 +427,8 @@ function login_ldap(){
                             <!--end::Title-->
                             <!--begin::Notice-->
                             <div class="text-muted fw-bold fs-6">If you need more info, please check out
-                                <a href="#" class="link-primary fw-bolder">Help Page</a>.</div>
+                                <a href="#" class="link-primary fw-bolder">Help Page</a>.
+                            </div>
                             <!--end::Notice-->
                         </div>
                         <!--end::Heading-->
@@ -381,25 +438,34 @@ function login_ldap(){
                             <label class="form-label required">Business Name</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input name="business_name" class="form-control form-control-lg form-control-solid" value="Keenthemes Inc.">
+                            <input name="business_name" class="form-control form-control-lg form-control-solid"
+                                   value="Keenthemes Inc.">
                             <!--end::Input-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="fv-row mb-10 fv-plugins-icon-container">
                             <!--begin::Label-->
                             <label class="d-flex align-items-center form-label">
                                 <span class="required">Shortened Descriptor</span>
-                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="<div class='p-4 rounded bg-light'> <div class='d-flex flex-stack text-muted mb-4'> <i class='fas fa-university fs-3 me-3'></i> <div class='fw-bold'>INCBANK **** 1245 STATEMENT</div> </div> <div class='d-flex flex-stack fw-bold text-gray-600'> <div>Amount</div> <div>Transaction</div> </div> <div class='separator separator-dashed my-2'></div> <div class='d-flex flex-stack text-dark fw-bolder mb-2'> <div>USD345.00</div> <div>KEENTHEMES*</div> </div> <div class='d-flex flex-stack text-muted mb-2'> <div>USD75.00</div> <div>Hosting fee</div> </div> <div class='d-flex flex-stack text-muted'> <div>USD3,950.00</div> <div>Payrol</div> </div> </div>" data-bs-original-title="" title=""></i>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover"
+                                   data-bs-trigger="hover" data-bs-html="true"
+                                   data-bs-content="<div class='p-4 rounded bg-light'> <div class='d-flex flex-stack text-muted mb-4'> <i class='fas fa-university fs-3 me-3'></i> <div class='fw-bold'>INCBANK **** 1245 STATEMENT</div> </div> <div class='d-flex flex-stack fw-bold text-gray-600'> <div>Amount</div> <div>Transaction</div> </div> <div class='separator separator-dashed my-2'></div> <div class='d-flex flex-stack text-dark fw-bolder mb-2'> <div>USD345.00</div> <div>KEENTHEMES*</div> </div> <div class='d-flex flex-stack text-muted mb-2'> <div>USD75.00</div> <div>Hosting fee</div> </div> <div class='d-flex flex-stack text-muted'> <div>USD3,950.00</div> <div>Payrol</div> </div> </div>"
+                                   data-bs-original-title="" title=""></i>
                             </label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input name="business_descriptor" class="form-control form-control-lg form-control-solid" value="KEENTHEMES">
+                            <input name="business_descriptor" class="form-control form-control-lg form-control-solid"
+                                   value="KEENTHEMES">
                             <!--end::Input-->
                             <!--begin::Hint-->
-                            <div class="form-text">Customers will see this shortened version of your statement descriptor</div>
+                            <div class="form-text">Customers will see this shortened version of your statement
+                                descriptor
+                            </div>
                             <!--end::Hint-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="fv-row mb-10 fv-plugins-icon-container">
@@ -407,7 +473,11 @@ function login_ldap(){
                             <label class="form-label required">Corporation Type</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="business_type" class="form-select form-select-lg form-select-solid select2-hidden-accessible" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true" data-select2-id="select2-data-10-trbv" tabindex="-1" aria-hidden="true">
+                            <select name="business_type"
+                                    class="form-select form-select-lg form-select-solid select2-hidden-accessible"
+                                    data-control="select2" data-placeholder="Select..." data-allow-clear="true"
+                                    data-hide-search="true" data-select2-id="select2-data-10-trbv" tabindex="-1"
+                                    aria-hidden="true">
                                 <option data-select2-id="select2-data-12-ooqe"></option>
                                 <option value="1">S Corporation</option>
                                 <option value="1">C Corporation</option>
@@ -415,9 +485,23 @@ function login_ldap(){
                                 <option value="3">Non-profit</option>
                                 <option value="4">Limited Liability</option>
                                 <option value="5">General Partnership</option>
-                            </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-11-ls58" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-lg form-select-solid" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-business_type-f5-container" aria-controls="select2-business_type-f5-container"><span class="select2-selection__rendered" id="select2-business_type-f5-container" role="textbox" aria-readonly="true" title="Select..."><span class="select2-selection__placeholder">Select...</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr"
+                                           data-select2-id="select2-data-11-ls58" style="width: 100%;"><span
+                                        class="selection"><span
+                                            class="select2-selection select2-selection--single form-select form-select-lg form-select-solid"
+                                            role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0"
+                                            aria-disabled="false" aria-labelledby="select2-business_type-f5-container"
+                                            aria-controls="select2-business_type-f5-container"><span
+                                                class="select2-selection__rendered"
+                                                id="select2-business_type-f5-container" role="textbox"
+                                                aria-readonly="true" title="Select..."><span
+                                                    class="select2-selection__placeholder">Select...</span></span><span
+                                                class="select2-selection__arrow" role="presentation"><b
+                                                    role="presentation"></b></span></span></span><span
+                                        class="dropdown-wrapper" aria-hidden="true"></span></span>
                             <!--end::Input-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="fv-row mb-10 fv-plugins-icon-container">
@@ -425,9 +509,11 @@ function login_ldap(){
                             <label class="form-label">Business Description</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <textarea name="business_description" class="form-control form-control-lg form-control-solid" rows="3"></textarea>
+                            <textarea name="business_description"
+                                      class="form-control form-control-lg form-control-solid" rows="3"></textarea>
                             <!--end::Input-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="fv-row mb-0 fv-plugins-icon-container">
@@ -435,9 +521,11 @@ function login_ldap(){
                             <label class="fs-6 fw-bold form-label required">Contact Email</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input name="business_email" class="form-control form-control-lg form-control-solid" value="corp@support.com">
+                            <input name="business_email" class="form-control form-control-lg form-control-solid"
+                                   value="corp@support.com">
                             <!--end::Input-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                     </div>
                     <!--end::Wrapper-->
@@ -454,7 +542,8 @@ function login_ldap(){
                             <!--end::Title-->
                             <!--begin::Notice-->
                             <div class="text-muted fw-bold fs-6">If you need more info, please check out
-                                <a href="#" class="text-primary fw-bolder">Help Page</a>.</div>
+                                <a href="#" class="text-primary fw-bolder">Help Page</a>.
+                            </div>
                             <!--end::Notice-->
                         </div>
                         <!--end::Heading-->
@@ -463,11 +552,15 @@ function login_ldap(){
                             <!--begin::Label-->
                             <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                 <span class="required">Name On Card</span>
-                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Specify a card holder's name" aria-label="Specify a card holder's name"></i>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title=""
+                                   data-bs-original-title="Specify a card holder's name"
+                                   aria-label="Specify a card holder's name"></i>
                             </label>
                             <!--end::Label-->
-                            <input type="text" class="form-control form-control-solid" placeholder="" name="card_name" value="Max Doe">
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <input type="text" class="form-control form-control-solid" placeholder="" name="card_name"
+                                   value="Max Doe">
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-7 fv-row fv-plugins-icon-container">
@@ -477,18 +570,23 @@ function login_ldap(){
                             <!--begin::Input wrapper-->
                             <div class="position-relative">
                                 <!--begin::Input-->
-                                <input type="text" class="form-control form-control-solid" placeholder="Enter card number" name="card_number" value="4111 1111 1111 1111">
+                                <input type="text" class="form-control form-control-solid"
+                                       placeholder="Enter card number" name="card_number" value="4111 1111 1111 1111">
                                 <!--end::Input-->
                                 <!--begin::Card logos-->
                                 <div class="position-absolute translate-middle-y top-50 end-0 me-5">
-                                    <img src="/seven-html-pro/assets/media/svg/card-logos/visa.svg" alt="" class="h-25px">
-                                    <img src="/seven-html-pro/assets/media/svg/card-logos/mastercard.svg" alt="" class="h-25px">
-                                    <img src="/seven-html-pro/assets/media/svg/card-logos/american-express.svg" alt="" class="h-25px">
+                                    <img src="/seven-html-pro/assets/media/svg/card-logos/visa.svg" alt=""
+                                         class="h-25px">
+                                    <img src="/seven-html-pro/assets/media/svg/card-logos/mastercard.svg" alt=""
+                                         class="h-25px">
+                                    <img src="/seven-html-pro/assets/media/svg/card-logos/american-express.svg" alt=""
+                                         class="h-25px">
                                 </div>
                                 <!--end::Card logos-->
                             </div>
                             <!--end::Input wrapper-->
-                            <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                            <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="row mb-10">
@@ -501,7 +599,10 @@ function login_ldap(){
                                 <div class="row fv-row fv-plugins-icon-container">
                                     <!--begin::Col-->
                                     <div class="col-6">
-                                        <select name="card_expiry_month" class="form-select form-select-solid select2-hidden-accessible" data-control="select2" data-hide-search="true" data-placeholder="Month" data-select2-id="select2-data-13-f87n" tabindex="-1" aria-hidden="true">
+                                        <select name="card_expiry_month"
+                                                class="form-select form-select-solid select2-hidden-accessible"
+                                                data-control="select2" data-hide-search="true" data-placeholder="Month"
+                                                data-select2-id="select2-data-13-f87n" tabindex="-1" aria-hidden="true">
                                             <option data-select2-id="select2-data-15-lv60"></option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
@@ -515,12 +616,30 @@ function login_ldap(){
                                             <option value="10">10</option>
                                             <option value="11">11</option>
                                             <option value="12">12</option>
-                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-14-7d6q" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-card_expiry_month-7r-container" aria-controls="select2-card_expiry_month-7r-container"><span class="select2-selection__rendered" id="select2-card_expiry_month-7r-container" role="textbox" aria-readonly="true" title="Month"><span class="select2-selection__placeholder">Month</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                        <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5"
+                                                       dir="ltr" data-select2-id="select2-data-14-7d6q"
+                                                       style="width: 100%;"><span class="selection"><span
+                                                        class="select2-selection select2-selection--single form-select form-select-solid"
+                                                        role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                        tabindex="0" aria-disabled="false"
+                                                        aria-labelledby="select2-card_expiry_month-7r-container"
+                                                        aria-controls="select2-card_expiry_month-7r-container"><span
+                                                            class="select2-selection__rendered"
+                                                            id="select2-card_expiry_month-7r-container" role="textbox"
+                                                            aria-readonly="true" title="Month"><span
+                                                                class="select2-selection__placeholder">Month</span></span><span
+                                                            class="select2-selection__arrow" role="presentation"><b
+                                                                role="presentation"></b></span></span></span><span
+                                                    class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-6">
-                                        <select name="card_expiry_year" class="form-select form-select-solid select2-hidden-accessible" data-control="select2" data-hide-search="true" data-placeholder="Year" data-select2-id="select2-data-16-t95w" tabindex="-1" aria-hidden="true">
+                                        <select name="card_expiry_year"
+                                                class="form-select form-select-solid select2-hidden-accessible"
+                                                data-control="select2" data-hide-search="true" data-placeholder="Year"
+                                                data-select2-id="select2-data-16-t95w" tabindex="-1" aria-hidden="true">
                                             <option data-select2-id="select2-data-18-v8n0"></option>
                                             <option value="2022">2022</option>
                                             <option value="2023">2023</option>
@@ -533,8 +652,23 @@ function login_ldap(){
                                             <option value="2030">2030</option>
                                             <option value="2031">2031</option>
                                             <option value="2032">2032</option>
-                                        </select><span class="select2 select2-container select2-container--bootstrap5" dir="ltr" data-select2-id="select2-data-17-yzsk" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single form-select form-select-solid" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-card_expiry_year-cy-container" aria-controls="select2-card_expiry_year-cy-container"><span class="select2-selection__rendered" id="select2-card_expiry_year-cy-container" role="textbox" aria-readonly="true" title="Year"><span class="select2-selection__placeholder">Year</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                        <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                                        </select><span class="select2 select2-container select2-container--bootstrap5"
+                                                       dir="ltr" data-select2-id="select2-data-17-yzsk"
+                                                       style="width: 100%;"><span class="selection"><span
+                                                        class="select2-selection select2-selection--single form-select form-select-solid"
+                                                        role="combobox" aria-haspopup="true" aria-expanded="false"
+                                                        tabindex="0" aria-disabled="false"
+                                                        aria-labelledby="select2-card_expiry_year-cy-container"
+                                                        aria-controls="select2-card_expiry_year-cy-container"><span
+                                                            class="select2-selection__rendered"
+                                                            id="select2-card_expiry_year-cy-container" role="textbox"
+                                                            aria-readonly="true" title="Year"><span
+                                                                class="select2-selection__placeholder">Year</span></span><span
+                                                            class="select2-selection__arrow" role="presentation"><b
+                                                                role="presentation"></b></span></span></span><span
+                                                    class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                        <div class="fv-plugins-message-container invalid-feedback"></div>
+                                    </div>
                                     <!--end::Col-->
                                 </div>
                                 <!--end::Row-->
@@ -545,21 +679,29 @@ function login_ldap(){
                                 <!--begin::Label-->
                                 <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
                                     <span class="required">CVV</span>
-                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="" data-bs-original-title="Enter a card CVV code" aria-label="Enter a card CVV code"></i>
+                                    <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title=""
+                                       data-bs-original-title="Enter a card CVV code"
+                                       aria-label="Enter a card CVV code"></i>
                                 </label>
                                 <!--end::Label-->
                                 <!--begin::Input wrapper-->
                                 <div class="position-relative">
                                     <!--begin::Input-->
-                                    <input type="text" class="form-control form-control-solid" minlength="3" maxlength="4" placeholder="CVV" name="card_cvv">
+                                    <input type="text" class="form-control form-control-solid" minlength="3"
+                                           maxlength="4" placeholder="CVV" name="card_cvv">
                                     <!--end::Input-->
                                     <!--begin::CVV icon-->
                                     <div class="position-absolute translate-middle-y top-50 end-0 me-3">
                                         <!--begin::Svg Icon | path: icons/duotune/finance/fin002.svg-->
                                         <span class="svg-icon svg-icon-2hx">
-																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																			<path d="M22 7H2V11H22V7Z" fill="black"></path>
-																			<path opacity="0.3" d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19ZM14 14C14 13.4 13.6 13 13 13H5C4.4 13 4 13.4 4 14C4 14.6 4.4 15 5 15H13C13.6 15 14 14.6 14 14ZM16 15.5C16 16.3 16.7 17 17.5 17H18.5C19.3 17 20 16.3 20 15.5C20 14.7 19.3 14 18.5 14H17.5C16.7 14 16 14.7 16 15.5Z" fill="black"></path>
+																		<svg xmlns="http://www.w3.org/2000/svg"
+                                                                             width="24" height="24" viewBox="0 0 24 24"
+                                                                             fill="none">
+																			<path d="M22 7H2V11H22V7Z"
+                                                                                  fill="black"></path>
+																			<path opacity="0.3"
+                                                                                  d="M21 19H3C2.4 19 2 18.6 2 18V6C2 5.4 2.4 5 3 5H21C21.6 5 22 5.4 22 6V18C22 18.6 21.6 19 21 19ZM14 14C14 13.4 13.6 13 13 13H5C4.4 13 4 13.4 4 14C4 14.6 4.4 15 5 15H13C13.6 15 14 14.6 14 14ZM16 15.5C16 16.3 16.7 17 17.5 17H18.5C19.3 17 20 16.3 20 15.5C20 14.7 19.3 14 18.5 14H17.5C16.7 14 16 14.7 16 15.5Z"
+                                                                                  fill="black"></path>
 																		</svg>
 																	</span>
                                         <!--end::Svg Icon-->
@@ -567,7 +709,8 @@ function login_ldap(){
                                     <!--end::CVV icon-->
                                 </div>
                                 <!--end::Input wrapper-->
-                                <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                                <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Input group-->
@@ -576,7 +719,9 @@ function login_ldap(){
                             <!--begin::Label-->
                             <div class="me-5">
                                 <label class="fs-6 fw-bold form-label">Save Card for further billing?</label>
-                                <div class="fs-7 fw-bold text-muted">If you need more info, please check budget planning</div>
+                                <div class="fs-7 fw-bold text-muted">If you need more info, please check budget
+                                    planning
+                                </div>
                             </div>
                             <!--end::Label-->
                             <!--begin::Switch-->
@@ -602,14 +747,19 @@ function login_ldap(){
                             <!--end::Title-->
                             <!--begin::Notice-->
                             <div class="text-muted fw-bold fs-6">If you need more info, please
-                                <a href="/seven-html-pro/?page=authentication/sign-in/basic" class="link-primary fw-bolder">Sign In</a>.</div>
+                                <a href="/seven-html-pro/?page=authentication/sign-in/basic"
+                                   class="link-primary fw-bolder">Sign In</a>.
+                            </div>
                             <!--end::Notice-->
                         </div>
                         <!--end::Heading-->
                         <!--begin::Body-->
                         <div class="mb-0">
                             <!--begin::Text-->
-                            <div class="fs-6 text-gray-600 mb-5">Writing headlines for blog posts is as much an art as it is a science and probably warrants its own post, but for all advise is with what works for your great &amp; amazing audience.</div>
+                            <div class="fs-6 text-gray-600 mb-5">Writing headlines for blog posts is as much an art as
+                                it is a science and probably warrants its own post, but for all advise is with what
+                                works for your great &amp; amazing audience.
+                            </div>
                             <!--end::Text-->
                             <!--begin::Alert-->
                             <!--begin::Notice-->
@@ -617,10 +767,16 @@ function login_ldap(){
                                 <!--begin::Icon-->
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
                                 <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
-																<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																	<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"></rect>
-																	<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"></rect>
-																	<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"></rect>
+																<svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                     height="24" viewBox="0 0 24 24" fill="none">
+																	<rect opacity="0.3" x="2" y="2" width="20"
+                                                                          height="20" rx="10" fill="black"></rect>
+																	<rect x="11" y="14" width="7" height="2" rx="1"
+                                                                          transform="rotate(-90 11 14)"
+                                                                          fill="black"></rect>
+																	<rect x="11" y="17" width="2" height="2" rx="1"
+                                                                          transform="rotate(-90 11 17)"
+                                                                          fill="black"></rect>
 																</svg>
 															</span>
                                 <!--end::Svg Icon-->
@@ -649,15 +805,20 @@ function login_ldap(){
                 <div class="d-flex flex-stack pt-15">
                     <!--begin::Wrapper-->
                     <div class="mr-2">
-                        <button type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
+                        <button type="button" class="btn btn-lg btn-light-primary me-3"
+                                data-kt-stepper-action="previous">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr063.svg-->
                             <span class="svg-icon svg-icon-4 me-1">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<rect opacity="0.5" x="6" y="11" width="13" height="2" rx="1" fill="black"></rect>
-															<path d="M8.56569 11.4343L12.75 7.25C13.1642 6.83579 13.1642 6.16421 12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75L5.70711 11.2929C5.31658 11.6834 5.31658 12.3166 5.70711 12.7071L11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25C13.1642 17.8358 13.1642 17.1642 12.75 16.75L8.56569 12.5657C8.25327 12.2533 8.25327 11.7467 8.56569 11.4343Z" fill="black"></path>
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewBox="0 0 24 24" fill="none">
+															<rect opacity="0.5" x="6" y="11" width="13" height="2"
+                                                                  rx="1" fill="black"></rect>
+															<path d="M8.56569 11.4343L12.75 7.25C13.1642 6.83579 13.1642 6.16421 12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75L5.70711 11.2929C5.31658 11.6834 5.31658 12.3166 5.70711 12.7071L11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25C13.1642 17.8358 13.1642 17.1642 12.75 16.75L8.56569 12.5657C8.25327 12.2533 8.25327 11.7467 8.56569 11.4343Z"
+                                                                  fill="black"></path>
 														</svg>
 													</span>
-                            <!--end::Svg Icon-->Back</button>
+                            <!--end::Svg Icon-->Back
+                        </button>
                     </div>
                     <!--end::Wrapper-->
                     <!--begin::Wrapper-->
@@ -666,9 +827,13 @@ function login_ldap(){
 														<span class="indicator-label">Submit
                                                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
 														<span class="svg-icon svg-icon-3 ms-2 me-0">
-															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-																<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-																<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
+															<svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                 height="24" viewBox="0 0 24 24" fill="none">
+																<rect opacity="0.5" x="18" y="13" width="13" height="2"
+                                                                      rx="1" transform="rotate(-180 18 13)"
+                                                                      fill="black"></rect>
+																<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
+                                                                      fill="black"></path>
 															</svg>
 														</span>
                                                             <!--end::Svg Icon--></span>
@@ -678,9 +843,13 @@ function login_ldap(){
                         <button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">Continue
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
                             <span class="svg-icon svg-icon-4 ms-1 me-0">
-														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-															<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-															<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                             viewBox="0 0 24 24" fill="none">
+															<rect opacity="0.5" x="18" y="13" width="13" height="2"
+                                                                  rx="1" transform="rotate(-180 18 13)"
+                                                                  fill="black"></rect>
+															<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z"
+                                                                  fill="black"></path>
 														</svg>
 													</span>
                             <!--end::Svg Icon--></button>
@@ -688,7 +857,11 @@ function login_ldap(){
                     <!--end::Wrapper-->
                 </div>
                 <!--end::Actions-->
-                <div></div><div></div><div></div><div></div></form>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </form>
             <!--end::Form-->
         </div>
         <!--end::Stepper-->
